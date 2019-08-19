@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name powermodule)(type Legacy)(uri /home/dani/esp-relays/pcb/Aux/powermodule.lib)(options "")(descr ""))
+)

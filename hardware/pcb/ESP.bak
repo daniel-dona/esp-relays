@@ -1,0 +1,372 @@
+EESchema Schematic File Version 4
+LIBS:Aux
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Conn_01x03_Male J1
+U 1 1 5C68473A
+P 900 1900
+F 0 "J1" H 1006 2178 50  0000 C CNN
+F 1 "UART" H 1006 2087 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 900 1900 50  0001 C CNN
+F 3 "~" H 900 1900 50  0001 C CNN
+	1    900  1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x03 J2
+U 1 1 5C6873F5
+P 950 2350
+F 0 "J2" H 870 2025 50  0000 C CNN
+F 1 "AC IN" H 870 2116 50  0000 C CNN
+F 2 "TerminalBlock:TerminalBlock_Altech_AK300-3_P5.00mm" H 950 2350 50  0001 C CNN
+F 3 "~" H 950 2350 50  0001 C CNN
+	1    950  2350
+	-1   0    0    1   
+$EndComp
+$Comp
+L ESP-rescue:PowerModule-powermodule PW101
+U 1 1 5C688E9F
+P 4300 1900
+F 0 "PW101" H 4300 2250 50  0001 C CIN
+F 1 "PowerModule" H 4300 2173 50  0000 C CNN
+F 2 "PowerModule:PowerModule" H 4300 2250 50  0001 C CNN
+F 3 "" H 4300 2250 50  0001 C CNN
+	1    4300 1900
+	1    0    0    -1  
+$EndComp
+Text GLabel 2300 3650 2    50   Input ~ 0
+GND
+$Comp
+L RF_Module:ESP-12F U1
+U 1 1 5C68441E
+P 2250 2950
+F 0 "U1" H 2250 3928 50  0000 C CNN
+F 1 "ESP-12F" H 2250 3837 50  0000 C CNN
+F 2 "RF_Module:ESP-12E" H 2250 2950 50  0001 C CNN
+F 3 "http://wiki.ai-thinker.com/_media/esp8266/esp8266_series_modules_user_manual_v1.1.pdf" H 1900 3050 50  0001 C CNN
+	1    2250 2950
+	1    0    0    -1  
+$EndComp
+Text GLabel 4800 2000 2    50   Input ~ 0
+GND
+Wire Wire Line
+	4700 2000 4800 2000
+Text GLabel 4800 1800 2    50   Input ~ 0
+3V3
+Wire Wire Line
+	4700 1800 4800 1800
+Text GLabel 2350 2150 2    50   Input ~ 0
+3V3
+Wire Wire Line
+	2250 2150 2350 2150
+Wire Wire Line
+	2250 3650 2300 3650
+Text GLabel 1150 1800 2    50   Input ~ 0
+GND
+Wire Wire Line
+	1100 2000 1150 2000
+Text GLabel 3850 1800 0    50   Input ~ 0
+L
+Text GLabel 3850 2000 0    50   Input ~ 0
+N
+Wire Wire Line
+	3900 1800 3850 1800
+Wire Wire Line
+	3900 2000 3850 2000
+Text GLabel 1250 2250 2    50   Input ~ 0
+L
+Text GLabel 1250 2450 2    50   Input ~ 0
+N
+Wire Wire Line
+	1150 2250 1250 2250
+Wire Wire Line
+	1150 2450 1250 2450
+Text GLabel 1150 1900 2    50   Input ~ 0
+UART_TX
+Text GLabel 1150 2000 2    50   Input ~ 0
+UART_RX
+Text GLabel 2950 2450 2    50   Input ~ 0
+UART_TX
+Text GLabel 2950 2650 2    50   Input ~ 0
+UART_RX
+Wire Wire Line
+	2850 2450 2950 2450
+Wire Wire Line
+	2950 2650 2850 2650
+Wire Wire Line
+	1100 1800 1150 1800
+Wire Wire Line
+	1100 1900 1150 1900
+$Comp
+L Relay:Y14x-1C-xxDS K1
+U 1 1 5C687123
+P 4600 3800
+F 0 "K1" H 5030 3846 50  0000 L CNN
+F 1 "RL1" H 5030 3755 50  0000 L CNN
+F 2 "PowerModule:Relay_SPDT_SANYOU_SRD_Series_Form_C" H 5050 3750 50  0001 L CNN
+F 3 "http://www.hsinda.com.cn/en/imgdown.asp?FileName=UploadFiles/201431310240386.pdf" H 4600 3800 50  0001 C CNN
+	1    4600 3800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 3450 4400 3500
+$Comp
+L Device:D D1
+U 1 1 5C68759C
+P 3950 3800
+F 0 "D1" V 3904 3879 50  0000 L CNN
+F 1 "D" V 3995 3879 50  0000 L CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3950 3800 50  0001 C CNN
+F 3 "~" H 3950 3800 50  0001 C CNN
+	1    3950 3800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4400 3500 3950 3500
+Wire Wire Line
+	3950 3500 3950 3650
+Connection ~ 4400 3500
+Wire Wire Line
+	3950 3950 3950 4100
+Wire Wire Line
+	3950 4100 4400 4100
+Text GLabel 4400 4250 3    50   Input ~ 0
+3V3
+Text GLabel 3700 3250 0    50   Input ~ 0
+IO1
+Text GLabel 4400 2950 1    50   Input ~ 0
+GND
+Wire Wire Line
+	4400 4100 4400 4250
+Connection ~ 4400 4100
+$Comp
+L Connector:Screw_Terminal_01x03 J3
+U 1 1 5C688497
+P 950 2900
+F 0 "J3" H 870 2575 50  0000 C CNN
+F 1 "RL1 CON" H 870 2666 50  0000 C CNN
+F 2 "TerminalBlock:TerminalBlock_Altech_AK300-3_P5.00mm" H 950 2900 50  0001 C CNN
+F 3 "~" H 950 2900 50  0001 C CNN
+	1    950  2900
+	-1   0    0    1   
+$EndComp
+Text GLabel 1150 2900 2    50   Input ~ 0
+COM1
+Text GLabel 1150 2800 2    50   Input ~ 0
+NO1
+Text GLabel 1150 3000 2    50   Input ~ 0
+NC1
+Text GLabel 4800 4100 3    50   Input ~ 0
+COM1
+Text GLabel 4700 3500 1    50   Input ~ 0
+NC1
+Text GLabel 4900 3500 1    50   Input ~ 0
+NO1
+$Comp
+L Relay:Y14x-1C-xxDS K2
+U 1 1 5C689369
+P 6550 3800
+F 0 "K2" H 6980 3846 50  0000 L CNN
+F 1 "RL2" H 6980 3755 50  0000 L CNN
+F 2 "PowerModule:Relay_SPDT_SANYOU_SRD_Series_Form_C" H 7000 3750 50  0001 L CNN
+F 3 "http://www.hsinda.com.cn/en/imgdown.asp?FileName=UploadFiles/201431310240386.pdf" H 6550 3800 50  0001 C CNN
+	1    6550 3800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6350 3450 6350 3500
+$Comp
+L Device:D D2
+U 1 1 5C68937C
+P 5900 3800
+F 0 "D2" V 5854 3879 50  0000 L CNN
+F 1 "D" V 5945 3879 50  0000 L CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 5900 3800 50  0001 C CNN
+F 3 "~" H 5900 3800 50  0001 C CNN
+	1    5900 3800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6350 3500 5900 3500
+Wire Wire Line
+	5900 3500 5900 3650
+Connection ~ 6350 3500
+Wire Wire Line
+	5900 3950 5900 4100
+Wire Wire Line
+	5900 4100 6350 4100
+Text GLabel 5650 3250 0    50   Input ~ 0
+IO2
+Wire Wire Line
+	6350 4100 6350 4250
+Connection ~ 6350 4100
+Text GLabel 6750 4100 3    50   Input ~ 0
+COM2
+Text GLabel 6650 3500 1    50   Input ~ 0
+NC2
+Text GLabel 6850 3500 1    50   Input ~ 0
+NO2
+$Comp
+L Connector:Screw_Terminal_01x03 J4
+U 1 1 5C6898FB
+P 950 3450
+F 0 "J4" H 870 3125 50  0000 C CNN
+F 1 "RL2 CON" H 870 3216 50  0000 C CNN
+F 2 "TerminalBlock:TerminalBlock_Altech_AK300-3_P5.00mm" H 950 3450 50  0001 C CNN
+F 3 "~" H 950 3450 50  0001 C CNN
+	1    950  3450
+	-1   0    0    1   
+$EndComp
+Text GLabel 1150 3450 2    50   Input ~ 0
+COM2
+Text GLabel 1150 3350 2    50   Input ~ 0
+NO2
+Text GLabel 1150 3550 2    50   Input ~ 0
+NC2
+Text GLabel 2950 2950 2    50   Input ~ 0
+IO2
+Text GLabel 2950 3050 2    50   Input ~ 0
+IO1
+Wire Wire Line
+	2950 2950 2850 2950
+Wire Wire Line
+	2850 3050 2950 3050
+Text GLabel 1650 2550 0    50   Input ~ 0
+3V3
+$Comp
+L Switch:SW_Push SW1
+U 1 1 5C68C11D
+P 1300 4300
+F 0 "SW1" H 1300 4585 50  0000 C CNN
+F 1 "SW_Push" H 1300 4494 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_PUSH_6mm" H 1300 4500 50  0001 C CNN
+F 3 "" H 1300 4500 50  0001 C CNN
+	1    1300 4300
+	1    0    0    -1  
+$EndComp
+Text GLabel 1100 4300 0    50   Input ~ 0
+GND
+Text GLabel 1100 4550 0    50   Input ~ 0
+3V3
+$Comp
+L Device:R R4
+U 1 1 5C68C428
+P 1300 4550
+F 0 "R4" V 1093 4550 50  0000 C CNN
+F 1 "R" V 1184 4550 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 1230 4550 50  0001 C CNN
+F 3 "~" H 1300 4550 50  0001 C CNN
+	1    1300 4550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1150 4550 1100 4550
+Wire Wire Line
+	1500 4300 1600 4300
+Wire Wire Line
+	1600 4300 1600 4550
+Wire Wire Line
+	1600 4550 1450 4550
+Text GLabel 1800 4300 2    50   Input ~ 0
+FLASH
+Wire Wire Line
+	1600 4300 1800 4300
+Connection ~ 1600 4300
+Text GLabel 2950 2350 2    50   Input ~ 0
+FLASH
+Wire Wire Line
+	2850 2350 2950 2350
+Text GLabel 1100 5250 0    50   Input ~ 0
+3V3
+$Comp
+L Device:R R6
+U 1 1 5C68DEAB
+P 1300 5250
+F 0 "R6" V 1093 5250 50  0000 C CNN
+F 1 "R" V 1184 5250 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 1230 5250 50  0001 C CNN
+F 3 "~" H 1300 5250 50  0001 C CNN
+	1    1300 5250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1150 5250 1100 5250
+Text GLabel 1800 5250 2    50   Input ~ 0
+BOOT2
+Wire Wire Line
+	1450 5250 1800 5250
+Text GLabel 1100 4900 0    50   Input ~ 0
+GND
+$Comp
+L Device:R R5
+U 1 1 5C6912D9
+P 1300 4900
+F 0 "R5" V 1093 4900 50  0000 C CNN
+F 1 "R" V 1184 4900 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 1230 4900 50  0001 C CNN
+F 3 "~" H 1300 4900 50  0001 C CNN
+	1    1300 4900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1150 4900 1100 4900
+Text GLabel 1800 4900 2    50   Input ~ 0
+BOOT1
+Wire Wire Line
+	1450 4900 1800 4900
+Text GLabel 2950 3250 2    50   Input ~ 0
+BOOT1
+Text GLabel 2950 2550 2    50   Input ~ 0
+BOOT2
+Wire Wire Line
+	2950 2550 2850 2550
+Wire Wire Line
+	2950 3250 2850 3250
+$Comp
+L Transistor_FET:IRLZ44N Q1
+U 1 1 5D3B8B45
+P 4300 3250
+F 0 "Q1" H 4505 3296 50  0000 L CNN
+F 1 "IRLZ44N" H 4505 3205 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 4550 3175 50  0001 L CIN
+F 3 "http://www.irf.com/product-info/datasheets/data/irlz44n.pdf" H 4300 3250 50  0001 L CNN
+	1    4300 3250
+	1    0    0    1   
+$EndComp
+$Comp
+L Transistor_FET:IRLZ44N Q2
+U 1 1 5D3B8BED
+P 6250 3250
+F 0 "Q2" H 6455 3296 50  0000 L CNN
+F 1 "IRLZ44N" H 6455 3205 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 6500 3175 50  0001 L CIN
+F 3 "http://www.irf.com/product-info/datasheets/data/irlz44n.pdf" H 6250 3250 50  0001 L CNN
+	1    6250 3250
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	4400 2950 4400 3050
+Wire Wire Line
+	5650 3250 6050 3250
+Wire Wire Line
+	3700 3250 4100 3250
+Text GLabel 6350 4250 3    50   Input ~ 0
+3V3
+Text GLabel 6350 2950 1    50   Input ~ 0
+GND
+Wire Wire Line
+	6350 3050 6350 2950
+$EndSCHEMATC

@@ -1,2 +1,2 @@
 # esp-relays
-PCB and software to a IoT blinder controller
+Hardware y software para un controlador IoT de persianas motorizadas
