@@ -1,14 +1,17 @@
 -- file : a_mqtt.lua
 local module = {}
 
+a_conf = require("a_conf")
 a_dns = require("a_dns")
 a_hw = require("a_hw")
 
-local function subscribe_topic(ENDPOINT)
+
+
+local function subscribe_topic()
     
-    module.client:subscribe(ENDPOINT, 0, function(conn)
+    module.client:subscribe(a_conf.MQTT_ENDPOINT, 0, function(conn)
         
-        print("[MQTT] Subscribed to " .. ENDPOINT)
+        print("[MQTT] Subscribed to " .. a_conf.MQTT_ENDPOINT)
         
     end)
     
@@ -39,30 +42,72 @@ local function actions(c, t, data)
 	end
 end
 
+function module.stop()
 
-function module.start(ID, HOST, PORT, ENDPOINT)
+    if module.client ~= nil then
+
+        a_conf.timers.t3:unregister()
+
+        module.client:close()
+
+        module.client = nil
+
+        
+
+    end
+
+end
+
+
+function module.start()
     
-    module.client = mqtt.Client(ID, 5)
+    module.client = mqtt.Client(a_conf.MQTT_ID, 5)
        
     module.client:on("message", actions)
 
     module.client:on("offline", function(c)
 		
-		print("[MQTT] Disconnected from "..HOST)
-        module.start(ID, HOST, PORT, ENDPOINT)
+		print("[MQTT] Disconnected from "..a_conf.MQTT_SERVER)
+
+        print("[MQTT] Retrying in 15 seconds...")
+
+        a_conf.timers.t3:register(15000, tmr.ALARM_SINGLE, function() 
+      
+            module.start()
+
+        end)
+
+        a_conf.timers.t3:start()
         
     end)
     
     a_hw.setup()
     
-    a_dns.resolve(HOST, function(IP)
-    
-		module.client:connect(IP, PORT, function(c)
-			
-			print("[MQTT] Connected to "..HOST)
-			subscribe_topic(ENDPOINT)
-			
-		end)
+    a_dns.resolve(a_conf.MQTT_SERVER, function(IP)
+
+        module.client:connect(IP, a_conf.MQTT_PORT, function(c)
+    			
+    		print("[MQTT] Connected to "..a_conf.MQTT_SERVER)
+    		
+    		subscribe_topic()
+    			
+    	    end,
+    	    
+    	    function(c, r)
+    	        
+    	        print("[MQTT] Connection failed! ("..r..")")
+
+                print("[MQTT] Retrying in 15 seconds...")
+        
+                a_conf.timers.t3:register(15000, tmr.ALARM_SINGLE, function() 
+              
+                    module.start()
+        
+                end)
+
+                a_conf.timers.t3:start()
+                
+            end)
 		
 	end)
 

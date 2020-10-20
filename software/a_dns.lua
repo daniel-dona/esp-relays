@@ -3,11 +3,19 @@ local module = {}
 
 function module.resolve(HOST, cb)
 
-	conn = net.createConnection(net.TCP, 0)
+    conn = net.createConnection(net.TCP, 0)
     conn:dns(HOST, function(conn, IP) 
+
+        if IP ~= nil then
        
-        print("[DNS] Resolved "..HOST.." to "..IP) 
-        cb(IP)
+            print("[DNS] Resolved "..HOST.." to "..IP) 
+            cb(IP)
+
+        else
+
+            print("[DNS] Resolution failed!")
+
+        end
          
     end)
     conn = nil
