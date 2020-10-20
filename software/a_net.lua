@@ -6,7 +6,8 @@ a_conf = require("a_conf")
 function module.start(cb)
 
     wifi.sta.clearconfig() --reset
-    wifi.setmode(wifi.STATION);
+    wifi.setmode(wifi.STATION)
+    wifi.sta.autoconnect(0)
 
         --wifi.setphymode(wifi.PHYMODE_N)
     
@@ -19,6 +20,8 @@ function module.start(cb)
     wifi.sta.sethostname(a_conf.HOSTNAME)
 
     wifi.sta.config(station_cfg)
+
+    
 
     wifi.sta.sleeptype(wifi.NONE_SLEEP)
 	

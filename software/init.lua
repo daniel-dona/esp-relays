@@ -22,9 +22,9 @@ function a_main.boot()
     
     if br2 == 4 then
     
-        print("[BOOT] Boot delayed by 15 seconds")
+        print("[BOOT] Boot delayed by 5 seconds")
     
-        a_conf.timers.t1:register(15000, tmr.ALARM_SINGLE, function() 
+        a_conf.timers.t1:register(5000, tmr.ALARM_SINGLE, function() 
             
             print("[BOOT] Booting..."..br1.."/"..br2)
             a_main.setup_network(0) 
@@ -69,11 +69,11 @@ function a_main.setup_network(cb_v)
 		
 			-- Retry in 3 seconds
 
-           a_mqtt.stop()
+            a_mqtt.stop()
 			
-			print("[NET] Retrying in 15 seconds...")
+			print("[NET] Retrying in 5 seconds...")
 
-			a_conf.timers.t1:register(15000, tmr.ALARM_SINGLE, function() 
+			a_conf.timers.t1:register(5000, tmr.ALARM_SINGLE, function() 
 			
 				a_main.setup_network(0)
 			

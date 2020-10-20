@@ -61,7 +61,7 @@ end
 
 function module.start()
     
-    module.client = mqtt.Client(a_conf.MQTT_ID, 5)
+    module.client = mqtt.Client(a_conf.MQTT_ID, 15)
        
     module.client:on("message", actions)
 
@@ -69,9 +69,9 @@ function module.start()
 		
 		print("[MQTT] Disconnected from "..a_conf.MQTT_SERVER)
 
-        print("[MQTT] Retrying in 15 seconds...")
+        print("[MQTT] Retrying in 5 seconds...")
 
-        a_conf.timers.t3:register(15000, tmr.ALARM_SINGLE, function() 
+        a_conf.timers.t3:register(5000, tmr.ALARM_SINGLE, function() 
       
             module.start()
 
@@ -97,9 +97,9 @@ function module.start()
     	        
     	        print("[MQTT] Connection failed! ("..r..")")
 
-                print("[MQTT] Retrying in 15 seconds...")
+                print("[MQTT] Retrying in 5 seconds...")
         
-                a_conf.timers.t3:register(15000, tmr.ALARM_SINGLE, function() 
+                a_conf.timers.t3:register(5000, tmr.ALARM_SINGLE, function() 
               
                     module.start()
         
@@ -109,7 +109,21 @@ function module.start()
                 
             end)
 		
-	end)
+	end, function()
+ 
+	    print("[MQTT] Connection failed! (DNS)")
+
+        print("[MQTT] Retrying in 5 seconds...")
+        
+        a_conf.timers.t3:register(5000, tmr.ALARM_SINGLE, function() 
+              
+            module.start()
+        
+        end)
+
+        a_conf.timers.t3:start()
+        
+    end)
 
 end
 
